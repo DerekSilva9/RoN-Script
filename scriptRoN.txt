@@ -1,0 +1,46 @@
+--UI
+
+local Lib = loadstring(game:HttpGet("https://raw.githubusercontent.com/7hyh/kwargs_UI_Library/main/source.lua"))()
+
+local UI = Lib:Create{
+    Theme = "Dark", -- or any other theme
+    Size = UDim2.new(0, 555, 0, 400) -- default
+}
+
+local Main = UI:Tab{
+    Name = "Inicio"
+}
+
+local Divider = Main:Divider{
+    Name = "Inicio shit"
+}
+
+local QuitDivider = Main:Divider{
+    Name = "Sair"
+}
+
+-- Referências
+local player = game.Players.LocalPlayer
+local menu = script.Parent.Frame -- O Frame que contém os botões do menu
+local openButton = script.Parent.OpenButton -- O botão que abre/fecha o menu
+local manPowerButton = menu.ManPowerButton -- Botão para adicionar ManPower
+local moneyButton = menu.MoneyButton -- Botão para adicionar Dinheiro
+
+-- Função para abrir e fechar o menu
+openButton.MouseButton1Click:Connect(function()
+    menu.Visible = not menu.Visible -- Alterna a visibilidade do menu
+end)
+
+-- Função para aumentar o ManPower
+manPowerButton.MouseButton1Click:Connect(function()
+    if player:FindFirstChild("leaderstats") and player.leaderstats:FindFirstChild("ManPower") then
+        player.leaderstats.ManPower.Value = player.leaderstats.ManPower.Value + 500000 -- Adiciona 500 mil de ManPower
+    end
+end)
+
+-- Função para aumentar o Dinheiro
+moneyButton.MouseButton1Click:Connect(function()
+    if player:FindFirstChild("leaderstats") and player.leaderstats:FindFirstChild("Money") then
+        player.leaderstats.Money.Value = player.leaderstats.Money.Value + 1000000000 -- Adiciona 1 bilhão de Dinheiro
+    end
+end)
